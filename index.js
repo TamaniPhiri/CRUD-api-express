@@ -30,6 +30,11 @@ app.post('/', (req,res)=>{
     res.send("created");
 });
 
+app.patch('/:index', (req,res)=>{
+    list[req.params.index]=req.body;
+    res.send(list);
+})
+
 app.listen(port,()=>{
     console.log(`app is running at http://localhost:${port}`);
 });
