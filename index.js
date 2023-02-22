@@ -23,17 +23,22 @@ const list=[
 
 app.get('/',(req,res)=>{
     res.send(list);
-})
+});
 
 app.post('/', (req,res)=>{
     list.push(req.body);
-    res.send("created");
+    res.send(list);
 });
 
 app.patch('/:index', (req,res)=>{
     list[req.params.index]=req.body;
     res.send(list);
-})
+});
+
+app.delete('/:index',(req,res)=>{
+    list.splice(req.params.index,1);
+    res.send(list);
+});
 
 app.listen(port,()=>{
     console.log(`app is running at http://localhost:${port}`);
